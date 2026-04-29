@@ -72,7 +72,7 @@ $destinations = [
 
 $id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
 $dest = $destinations[$id] ?? null;
-if (!$dest) { header("Location: index.php"); exit(); }
+if (!$dest) { header("Location: home.php"); exit(); }
 
 // Simpan ulasan ke database
 $pesan_sukses = '';
@@ -110,9 +110,9 @@ while ($row = mysqli_fetch_assoc($q_ulasan)) {
   <!-- Navbar -->
   <nav class="bg-white shadow">
     <div class="max-w-5xl mx-auto px-4 flex items-center justify-between h-14">
-      <a href="index.php" class="text-lg font-bold text-green-700">🗺️ WisataRating</a>
+      <a href="home.php" class="text-lg font-bold text-green-700">🗺️ WisataRating</a>
       <div class="flex items-center gap-3">
-        <a href="index.php" class="text-sm text-gray-500 hover:text-green-700">← Kembali</a>
+        <a href="home.php" class="text-sm text-gray-500 hover:text-green-700">← Kembali</a>
         <?php if (isset($_SESSION['username'])): ?>
           <span class="text-sm text-gray-600">👋 <?= htmlspecialchars($_SESSION['username']) ?></span>
           <a href="Proses/logout.php" class="text-sm text-red-500 hover:text-red-700 font-semibold">Keluar</a>

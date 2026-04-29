@@ -310,7 +310,7 @@ if (isset($_GET['edit'])) {
   </div>
   <ul class="sidebar-menu">
     <li><a href="admin_ulasan.php" class="active"><span class="icon">⭐</span> Kelola Ulasan</a></li>
-    <li><a href="index.php"><span class="icon">🏠</span> Lihat Website</a></li>
+    <li><a href="home.php"><span class="icon">🏠</span> Lihat Website</a></li>
   </ul>
   <div class="sidebar-footer">
     Masuk sebagai: <strong><?= htmlspecialchars($_SESSION['username']) ?></strong><br>

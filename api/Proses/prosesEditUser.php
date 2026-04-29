@@ -5,7 +5,7 @@ include __DIR__ . '/../Server/koneksi.php';
 
 // Hanya admin_akun yang bisa kelola akun pengguna
 if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin_akun') {
-    header("Location: ../index.php");
+    header("Location: ../login.php");
     exit();
 }
 

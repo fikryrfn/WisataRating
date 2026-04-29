@@ -346,7 +346,7 @@ $total_admin  = mysqli_num_rows(mysqli_query($koneksi, "SELECT id FROM users WHE
         <span class="icon">💬</span> Semua Ulasan
       </a>
     </li>
-    <li><a href="index.php"><span class="icon">🏠</span> Lihat Website</a></li>
+    <li><a href="home.php"><span class="icon">🏠</span> Lihat Website</a></li>
   </ul>
   <div class="sidebar-footer">
     Masuk sebagai: <strong><?= htmlspecialchars($_SESSION['username']) ?></strong><br>

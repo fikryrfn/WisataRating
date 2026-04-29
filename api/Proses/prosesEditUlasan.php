@@ -5,7 +5,7 @@ include __DIR__ . '/../Server/koneksi.php';
 
 // Hanya admin dan admin_akun yang bisa edit ulasan
 if (!isset($_SESSION['role']) || !in_array($_SESSION['role'], ['admin', 'admin_akun'])) {
-    header("Location: ../index.php");
+    header("Location: ../login.php");
     exit();
 }
 

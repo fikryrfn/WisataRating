@@ -12,7 +12,7 @@
 
     <!-- Logo -->
     <div class="text-center mb-6">
-      <a href="index.php" class="text-2xl font-bold text-green-700">🗺️ WisataRating</a>
+      <a href="home.php" class="text-2xl font-bold text-green-700">🗺️ WisataRating</a>
       <p class="text-gray-500 text-sm mt-1">Buat akun baru</p>
     </div>
 

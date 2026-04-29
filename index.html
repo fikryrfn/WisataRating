@@ -2,42 +2,60 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>WisataRating</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WisataRating – Platform Ulasan Wisata Indonesia</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    .hero-gradient {
+      background: linear-gradient(135deg, #3b82f6 0%, #2563eb 40%, #06b6d4 100%);
+    }
+  </style>
 </head>
-<body class="bg-gray-50 min-h-screen">
+<body class="flex flex-col min-h-screen">
 
-  <!-- Header -->
-  <header class="bg-green-700 text-white py-6 px-4 text-center">
-    <h1 class="text-3xl font-bold">🌿 WisataRating</h1>
-    <p class="text-green-100 mt-1 text-sm">Temukan destinasi wisata terbaik Indonesia</p>
-  </header>
-
-  <!-- Search & Filter -->
-  <div class="max-w-5xl mx-auto px-4 py-6">
-    <input id="searchInput" type="text" placeholder="Cari destinasi wisata..."
-      oninput="filterCards()"
-      class="w-full border border-gray-300 rounded-xl px-4 py-2.5 text-sm mb-4 focus:outline-none focus:ring-2 focus:ring-green-500" />
-
-    <div class="flex flex-wrap gap-2 mb-6">
-      <button class="filter-btn bg-green-700 text-white border border-green-700 text-sm px-4 py-1.5 rounded-full"
-        onclick="setFilter(this, 'Semua')">Semua</button>
-      <button class="filter-btn border border-gray-300 text-gray-600 text-sm px-4 py-1.5 rounded-full"
-        onclick="setFilter(this, 'Pantai')">Pantai</button>
-      <button class="filter-btn border border-gray-300 text-gray-600 text-sm px-4 py-1.5 rounded-full"
-        onclick="setFilter(this, 'Gunung')">Gunung</button>
-      <button class="filter-btn border border-gray-300 text-gray-600 text-sm px-4 py-1.5 rounded-full"
-        onclick="setFilter(this, 'Budaya')">Budaya</button>
-      <button class="filter-btn border border-gray-300 text-gray-600 text-sm px-4 py-1.5 rounded-full"
-        onclick="setFilter(this, 'Air Terjun')">Air Terjun</button>
+  <!-- Navbar -->
+  <nav class="bg-white shadow-sm">
+    <div class="max-w-6xl mx-auto px-6 flex items-center justify-between h-14">
+      <a href="index.html" class="flex items-center gap-2 text-lg font-bold text-gray-800">
+        <span class="text-2xl">🗺️</span>
+        <span>WisataRating</span>
+      </a>
+      <div class="flex items-center gap-3">
+        <a href="api/login.php" class="text-sm text-gray-600 hover:text-gray-900 font-medium px-2">Masuk</a>
+        <a href="api/register.php" class="text-sm bg-blue-600 hover:bg-blue-700 text-white font-semibold px-5 py-2 rounded-lg transition-colors">Daftar</a>
+      </div>
     </div>
+  </nav>
 
-    <!-- Cards Grid -->
-    <div id="cards-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"></div>
-    <p id="no-result" class="hidden text-center text-gray-400 mt-10">Tidak ada hasil ditemukan.</p>
-  </div>
+  <!-- Hero Section -->
+  <main class="hero-gradient flex-1 flex flex-col items-center justify-center text-center px-6 py-16">
+    <div class="mb-6">
+      <span style="font-size: 72px; line-height: 1;">🗺️</span>
+    </div>
+    <h1 class="text-4xl sm:text-5xl font-extrabold text-white leading-tight mb-10">
+      Selamat Datang di<br>WisataRating
+    </h1>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="api/register.php"
+         class="bg-white text-blue-600 font-bold text-base px-8 py-3 rounded-xl hover:bg-gray-100 transition-colors shadow">
+        Daftar Sekarang →
+      </a>
+      <a href="api/login.php"
+         class="bg-transparent text-white font-bold text-base px-8 py-3 rounded-xl border-2 border-white hover:bg-white hover:text-blue-600 transition-colors">
+        Masuk
+      </a>
+    </div>
+  </main>
 
-  <script src="scripts.js"></script>
+  <!-- Footer -->
+  <footer class="hero-gradient text-center text-sm text-white py-4">
+    © 2025 WisataRating. Platform Ulasan Wisata Indonesia.
+  </footer>
+
 </body>
 </html>

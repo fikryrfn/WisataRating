@@ -1,6 +1,6 @@
 <?php
 session_start();
-include '../Server/koneksi.php';
+include __DIR__ . '/../Server/koneksi.php';
 
 if (!isset($_SESSION['role']) || !in_array($_SESSION['role'], ['admin', 'admin_akun'])) {
     header("Location: ../index.php");

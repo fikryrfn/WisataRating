@@ -1,9 +1,8 @@
 <?php
-require __DIR__ . '/../Server/auth.php';  // sesuaikan path relatifnya
+require_once __DIR__ . '/../Server/auth.php';  // sesuaikan path relatifnya
 auth_session();
 // Simpan di: api/Proses/prosesLogin.php
 
-require __DIR__ . '/../Server/auth.php';
 require __DIR__ . '/../Server/koneksi.php';
 
 $username = mysqli_real_escape_string($koneksi, $_POST['username']);

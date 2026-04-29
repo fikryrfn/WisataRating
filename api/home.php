@@ -1,4 +1,7 @@
-<?php session_start(); ?>
+<?php
+require __DIR__ . '/Server/auth.php';  // sesuaikan path relatifnya
+auth_session();
+?>
 <!DOCTYPE html>
 <html lang="id">
 <head>

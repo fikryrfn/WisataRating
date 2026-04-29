@@ -1,5 +1,6 @@
 <?php
-session_start();
+require __DIR__ . '/../Server/auth.php';  // sesuaikan path relatifnya
+auth_session();
 include __DIR__ . '/../Server/koneksi.php';
 
 // Hanya admin dan admin_akun yang bisa edit ulasan

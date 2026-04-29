@@ -1,26 +1,28 @@
 <?php
-session_start();
-include __DIR__ . '/../Server/koneksi.php';
+require __DIR__ . '/../Server/auth.php';  // sesuaikan path relatifnya
+auth_session();
+// Simpan di: api/Proses/prosesLogin.php
+
+require __DIR__ . '/../Server/auth.php';
+require __DIR__ . '/../Server/koneksi.php';
 
 $username = mysqli_real_escape_string($koneksi, $_POST['username']);
 $password = $_POST['password'];
 
-$query = "SELECT * FROM users WHERE username = '$username'";
+$query  = "SELECT * FROM users WHERE username = '$username'";
 $result = mysqli_query($koneksi, $query);
 
 if (mysqli_num_rows($result) === 1) {
     $user = mysqli_fetch_assoc($result);
 
     if (password_verify($password, $user['password'])) {
-        // Set semua data session
-        $_SESSION['user_id']  = $user['id'];
-        $_SESSION['username'] = $user['username'];
-        $_SESSION['email']    = $user['email'];
-        $_SESSION['role']     = $user['role'];
-
-        if (isset($_POST['remember'])) {
-            setcookie("username", $username, time() + 3600, "/");
-        }
+        // Simpan ke signed cookie (pengganti session)
+        auth_set(
+            (int) $user['id'],
+            $user['username'],
+            $user['email'],
+            $user['role']
+        );
 
         // Redirect berdasarkan role
         if ($user['role'] === 'admin_akun') {
@@ -39,4 +41,3 @@ if (mysqli_num_rows($result) === 1) {
     header("Location: ../login.php?error=username");
     exit();
 }
-?>

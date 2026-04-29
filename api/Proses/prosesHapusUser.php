@@ -1,5 +1,6 @@
 <?php
-session_start();
+require __DIR__ . '/../Server/auth.php';  // sesuaikan path relatifnya
+auth_session();
 include __DIR__ . '/../Server/koneksi.php';
 
 if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin_akun') {

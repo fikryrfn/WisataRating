@@ -1,4 +1,6 @@
 <?php
+require __DIR__ . '/../Server/auth.php';  // sesuaikan path relatifnya
+auth_session();
 include __DIR__ . '/../Server/koneksi.php';
 
 $username      = mysqli_real_escape_string($koneksi, $_POST['username']);

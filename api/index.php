@@ -1,0 +1,69 @@
+<?php
+session_start();
+// Jika sudah login, langsung ke halaman utama
+if (isset($_SESSION['username'])) {
+    header("Location: home.php");
+    exit;
+}
+?>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WisataRating – Platform Ulasan Wisata Indonesia</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    .hero-gradient {
+      background: linear-gradient(135deg, #3b82f6 0%, #2563eb 40%, #06b6d4 100%);
+    }
+  </style>
+</head>
+<body class="flex flex-col min-h-screen">
+
+  <!-- Navbar -->
+  <nav class="bg-white shadow-sm">
+    <div class="max-w-6xl mx-auto px-6 flex items-center justify-between h-14">
+      <a href="index.php" class="flex items-center gap-2 text-lg font-bold text-gray-800">
+        <span class="text-2xl">🗺️</span>
+        <span>WisataRating</span>
+      </a>
+      <div class="flex items-center gap-3">
+        <a href="login.php" class="text-sm text-gray-600 hover:text-gray-900 font-medium px-2">Masuk</a>
+        <a href="register.php" class="text-sm bg-blue-600 hover:bg-blue-700 text-white font-semibold px-5 py-2 rounded-lg transition-colors">Daftar</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <main class="hero-gradient flex-1 flex flex-col items-center justify-center text-center px-6 py-16">
+    <div class="mb-6">
+      <span style="font-size: 72px; line-height: 1;">🗺️</span>
+    </div>
+    <h1 class="text-4xl sm:text-5xl font-extrabold text-white leading-tight mb-10">
+      Selamat Datang di<br>WisataRating
+    </h1>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="register.php"
+         class="bg-white text-blue-600 font-bold text-base px-8 py-3 rounded-xl hover:bg-gray-100 transition-colors shadow">
+        Daftar Sekarang →
+      </a>
+      <a href="login.php"
+         class="bg-transparent text-white font-bold text-base px-8 py-3 rounded-xl border-2 border-white hover:bg-white hover:text-blue-600 transition-colors">
+        Masuk
+      </a>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="hero-gradient text-center text-sm text-white py-4">
+    © 2025 WisataRating. Platform Ulasan Wisata Indonesia.
+  </footer>
+
+</body>
+</html>

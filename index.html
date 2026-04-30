@@ -14,6 +14,49 @@
     .hero-gradient {
       background: linear-gradient(135deg, #3b82f6 0%, #2563eb 40%, #06b6d4 100%);
     }
+    .hero-bg {
+      position: relative;
+      background:
+        repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 59px,
+          rgba(255,255,255,0.04) 59px,
+          rgba(255,255,255,0.04) 60px
+        ),
+        repeating-linear-gradient(
+          90deg,
+          transparent,
+          transparent 59px,
+          rgba(255,255,255,0.04) 59px,
+          rgba(255,255,255,0.04) 60px
+        ),
+        radial-gradient(ellipse 80% 60% at 50% 40%, rgba(96,165,250,0.45) 0%, transparent 70%),
+        linear-gradient(135deg, #1e40af 0%, #2563eb 35%, #0891b2 70%, #0e7490 100%);
+      overflow: hidden;
+    }
+
+    .dots-overlay {
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(255,255,255,0.18) 1.5px, transparent 1.5px);
+      background-size: 40px 40px;
+      background-position: 20px 20px;
+    }
+
+    .wave-bottom {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      line-height: 0;
+    }
+
+    .circle-deco {
+      position: absolute;
+      border-radius: 50%;
+      border: 1.5px solid rgba(255,255,255,0.12);
+    }
   </style>
 </head>
 <body class="flex flex-col min-h-screen">
@@ -29,22 +72,45 @@
   </nav>
 
   <!-- Hero Section -->
-  <main class="hero-gradient flex-1 flex flex-col items-center justify-center text-center px-6 py-16">
-    <div class="mb-6">
-      <span style="font-size: 72px; line-height: 1;">🗺️</span>
+  <main class="hero-bg flex-1 flex flex-col items-center justify-center text-center px-6 py-16">
+
+    <!-- Titik-titik peta -->
+    <div class="dots-overlay"></div>
+
+    <!-- Lingkaran dekorasi -->
+    <div class="circle-deco" style="width:520px;height:520px;top:-130px;right:-150px;"></div>
+    <div class="circle-deco" style="width:300px;height:300px;top:-50px;right:-20px;"></div>
+    <div class="circle-deco" style="width:200px;height:200px;top:40px;right:100px;"></div>
+    <div class="circle-deco" style="width:380px;height:380px;bottom:-110px;left:-110px;"></div>
+    <div class="circle-deco" style="width:180px;height:180px;bottom:10px;left:30px;"></div>
+
+    <!-- Siluet pegunungan -->
+    <div class="wave-bottom">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 130" preserveAspectRatio="none" style="display:block;width:100%;height:80px;">
+        <path fill="rgba(29,78,216,0.3)" d="M0,80 L180,20 L360,70 L540,10 L720,60 L900,15 L1080,55 L1260,25 L1440,50 L1440,130 L0,130 Z"/>
+        <path fill="rgba(8,145,178,0.2)" d="M0,100 L200,50 L400,90 L600,40 L800,80 L1000,35 L1200,75 L1440,45 L1440,130 L0,130 Z"/>
+      </svg>
     </div>
-    <h1 class="text-4xl sm:text-5xl font-extrabold text-white leading-tight mb-10">
-      Selamat Datang di<br>WisataRating
-    </h1>
-    <div class="flex flex-col sm:flex-row gap-4 justify-center">
-      <a href="api/register.php"
-         class="bg-white text-blue-600 font-bold text-base px-8 py-3 rounded-xl hover:bg-gray-100 transition-colors shadow">
-        Daftar Sekarang →
-      </a>
-      <a href="api/login.php"
-         class="bg-transparent text-white font-bold text-base px-8 py-3 rounded-xl border-2 border-white hover:bg-white hover:text-blue-600 transition-colors">
-        Masuk
-      </a>
+
+    <!-- Konten -->
+    <div class="relative z-10">
+      <div class="mb-6">
+        <span style="font-size:72px;line-height:1;filter:drop-shadow(0 4px 16px rgba(0,0,0,0.25));">🗺️</span>
+      </div>
+      <h1 class="text-4xl sm:text-5xl font-extrabold text-white leading-tight mb-10"
+          style="text-shadow:0 2px 16px rgba(0,0,0,0.25);">
+        Selamat Datang di<br>WisataRating
+      </h1>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="api/register.php"
+           class="bg-white text-blue-600 font-bold text-base px-8 py-3 rounded-xl hover:bg-gray-100 transition-colors shadow-lg">
+          Daftar Sekarang →
+        </a>
+        <a href="api/login.php"
+           class="bg-transparent text-white font-bold text-base px-8 py-3 rounded-xl border-2 border-white hover:bg-white hover:text-blue-600 transition-colors">
+          Masuk
+        </a>
+      </div>
     </div>
   </main>
 

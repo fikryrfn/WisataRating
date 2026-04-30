@@ -80,10 +80,10 @@ function renderCards(data) {
 function setFilter(btn, category) {
   activeFilter = category;
   document.querySelectorAll('.filter-btn').forEach(b => {
-    b.classList.remove('bg-green-700', 'text-white', 'border-green-700');
+    b.classList.remove('active', 'bg-green-700', 'text-white', 'border-green-700');
     b.classList.add('border-gray-300', 'text-gray-600');
   });
-  btn.classList.add('bg-green-700', 'text-white', 'border-green-700');
+  btn.classList.add('active', 'bg-green-700', 'text-white', 'border-green-700');
   btn.classList.remove('border-gray-300', 'text-gray-600');
   applyFilters();
 }

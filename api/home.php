@@ -1,5 +1,5 @@
 <?php
-require __DIR__ . '/Server/auth.php';  // sesuaikan path relatifnya
+require __DIR__ . '/Server/auth.php';
 auth_session();
 ?>
 <!DOCTYPE html>
@@ -26,6 +26,46 @@ auth_session();
     .bar-bg   { flex:1; background:#e5e7eb; border-radius:4px; height:7px; overflow:hidden; }
     .bar-fill { height:100%; border-radius:4px; background: linear-gradient(90deg,#10b981,#059669);
                 transition: width .6s cubic-bezier(.4,0,.2,1); }
+
+    /* Hero background */
+    .hero-section {
+      position: relative;
+      overflow: hidden;
+      background:
+        repeating-linear-gradient(
+          0deg, transparent, transparent 49px,
+          rgba(255,255,255,0.03) 49px, rgba(255,255,255,0.03) 50px
+        ),
+        repeating-linear-gradient(
+          90deg, transparent, transparent 49px,
+          rgba(255,255,255,0.03) 49px, rgba(255,255,255,0.03) 50px
+        ),
+        radial-gradient(ellipse 70% 80% at 15% 50%, rgba(16,185,129,0.35) 0%, transparent 65%),
+        radial-gradient(ellipse 60% 70% at 85% 30%, rgba(5,150,105,0.3) 0%, transparent 60%),
+        linear-gradient(135deg, #064e3b 0%, #065f46 30%, #047857 60%, #065f46 100%);
+    }
+
+    .hero-dots {
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(255,255,255,0.15) 1.5px, transparent 1.5px);
+      background-size: 36px 36px;
+      background-position: 18px 18px;
+    }
+
+    .hero-circle {
+      position: absolute;
+      border-radius: 50%;
+      border: 1.5px solid rgba(255,255,255,0.1);
+    }
+
+    .hero-wave {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      line-height: 0;
+    }
   </style>
 </head>
 <body class="bg-gray-100 min-h-screen">
@@ -54,12 +94,29 @@ auth_session();
 </nav>
 
 <!-- HERO -->
-<div class="bg-gradient-to-br from-green-700 via-green-800 to-emerald-900 text-white py-12 px-4 text-center relative overflow-hidden">
-  <div class="absolute inset-0 opacity-10"
-    style="background-image:radial-gradient(circle at 20% 50%,#fff 0%,transparent 50%),
-           radial-gradient(circle at 80% 20%,#fff 0%,transparent 40%);"></div>
-  <div class="relative">
-    <h1 class="text-2xl sm:text-3xl font-extrabold mb-2 tracking-tight">Temukan Wisata Favoritmu</h1>
+<div class="hero-section text-white py-12 px-4 text-center">
+
+  <!-- Titik-titik -->
+  <div class="hero-dots"></div>
+
+  <!-- Lingkaran dekorasi -->
+  <div class="hero-circle" style="width:420px;height:420px;top:-180px;right:-100px;"></div>
+  <div class="hero-circle" style="width:220px;height:220px;top:-60px;right:80px;"></div>
+  <div class="hero-circle" style="width:300px;height:300px;bottom:-150px;left:-80px;"></div>
+  <div class="hero-circle" style="width:140px;height:140px;bottom:10px;left:120px;"></div>
+  <div class="hero-circle" style="width:100px;height:100px;top:20px;left:60px;"></div>
+
+  <!-- Siluet pegunungan bawah -->
+  <div class="hero-wave">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 80" preserveAspectRatio="none" style="display:block;width:100%;height:50px;">
+      <path fill="rgba(4,120,87,0.4)" d="M0,50 L160,15 L320,45 L480,8 L640,40 L800,12 L960,42 L1120,18 L1280,38 L1440,20 L1440,80 L0,80 Z"/>
+      <path fill="rgba(6,95,70,0.35)" d="M0,65 L200,35 L400,58 L600,28 L800,55 L1000,30 L1200,52 L1440,35 L1440,80 L0,80 Z"/>
+    </svg>
+  </div>
+
+  <!-- Konten -->
+  <div class="relative z-10">
+    <h1 class="text-2xl sm:text-3xl font-extrabold mb-2 tracking-tight" style="text-shadow:0 2px 12px rgba(0,0,0,0.2);">Temukan Wisata Favoritmu</h1>
     <p class="text-green-200 text-sm mb-6">Baca &amp; tulis ulasan destinasi wisata Indonesia</p>
     <div class="max-w-md mx-auto flex gap-2">
       <input id="searchInput" type="text" placeholder="Cari destinasi…"
@@ -191,7 +248,6 @@ async function loadSpendingData() {
     Mengambil data dari BPS…`;
 
   try {
-    // Tambahkan ts untuk bust cache PHP yang sudah expired
     const res  = await fetch(`api_bps.php?var=272&th=${th}&domain=0000&_ts=${Date.now()}`);
     const json = await res.json();
 
@@ -218,7 +274,6 @@ function renderTable(d, yearLabel) {
   const footer = document.getElementById('sp-footer');
   const tbody  = document.getElementById('sp-tbody');
 
-  // Update judul & sub-header tahun
   if (d.info?.judul) document.getElementById('sp-judul').textContent = d.info.judul;
   document.getElementById('sp-year-sub').textContent = yearLabel;
 
@@ -233,7 +288,6 @@ function renderTable(d, yearLabel) {
         <p class="text-xs mt-1">Coba pilih tahun lain.</p>
       </td></tr>`;
   } else {
-    // Hitung max untuk bar chart (abaikan "Rata-Rata")
     const vals = results
       .filter(r => r.negara !== 'Rata- Rata' && r.negara !== 'Rata-Rata')
       .map(r => parseFloat(r.nilai?.[yearLabel] || 0))
